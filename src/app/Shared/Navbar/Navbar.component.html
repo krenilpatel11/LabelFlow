@@ -1,0 +1,64 @@
+<!-- Navbar -->
+<nav
+  class="fixed flex w-[89%] items-center justify-between px-8 py-8 bg-white border-b-[1px] z-10"
+>
+  <!-- Logo -->
+  <div class="w-[16rem] -mt-4">
+    <img src="../../../assets/Image/labelFlow-tagline.png" alt="LabelFlow" />
+  </div>
+
+  <!-- Gmail -->
+  <div>
+    <p class="text-lg font-medium border-brand-default hover:text-brand-default ease-in duration-300 border-b-[1px]">
+      LabelFlow@gmail.com
+    </p>
+  </div>
+
+  <!-- call to book Menu -->
+  <div class="button-container flex gap-x-10">
+    <div
+      class="flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-6 py-[0.8rem] text-white text-lg ease-in duration-200 rounded-full"
+    >
+      <button>Book a call</button>
+      <img
+        width="32"
+        height="32"
+        src="https://img.icons8.com/hieroglyphs/32/FFFFFF/up-right.png"
+        alt="up-right"
+      />
+    </div>
+
+    <!-- Hamburger Menu (also acts as close button) -->
+    <div
+      #hamburgerButton
+      class="hamburger cursor-pointer h-14 w-14 rounded-full bg-black hover:bg-brand-default ease-in duration-200 flex flex-col justify-center items-center"
+      (click)="toggleNav()"
+    >
+      <div class="bar w-6 h-0.5 bg-white mb-1"></div>
+      <div class="bar w-6 h-0.5 bg-white mb-1"></div>
+      <div class="bar w-6 h-0.5 bg-white"></div>
+    </div>
+  </div>
+</nav>
+
+<!-- Full-page Navigation -->
+<div
+  #fullpageNav
+  id="fullpage-nav"
+  class="fixed inset-0 bg-white bg-opacity-90 z-1 hidden flex-col items-center justify-center text-black"
+>
+  <ul #navLinks class="text-7xl space-y-12 text-center">
+    <li class="nav-link relative">
+      <span class="hover-underline">Home</span>
+    </li>
+    <li class="nav-link relative">
+      <span class="hover-underline">About Us</span>
+    </li>
+    <li class="nav-link relative">
+      <span class="hover-underline">Projects</span>
+    </li>
+    <li class="nav-link relative">
+      <span class="hover-underline">Contact</span>
+    </li>
+  </ul>
+</div>
