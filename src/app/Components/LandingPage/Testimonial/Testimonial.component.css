@@ -1,0 +1,58 @@
+.slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.slick-slider {
+  position: relative;
+}
+
+.slick-slide {
+  text-align: center;
+  padding: 20px;
+}
+
+.testimonial {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.client-logo img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.client-details {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.client-details img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.client-details h4 {
+  margin: 0;
+}
+
+.client-details span {
+  color: #666;
+}
+
+.testiomonail_page_1{
+ display: flex !important;
+ align-items: stretch;
+}
+
+
+a:hover {
+  text-decoration: underline;
+}
+

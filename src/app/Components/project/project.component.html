@@ -1,0 +1,153 @@
+<div class="container mx-auto px-4 pt-32">
+  <div class="flex">
+    <!-- Scrollable List of Tags -->
+    <div class="w-1/5 pr-6">
+      <div class="scrollable">
+        <ul class="tablist mt-3 sticky top-40">
+          <li class="block my-4 mr-6 sm:mr-0 text-xl font-medium">
+            <a
+              (click)="filterProjects('all')"
+              [ngClass]="{
+                'text-dark font-semibold sm:border-primary sm:border-r-2 border-brand-default': selectedTag === 'all',
+                'text-gray-300': selectedTag !== 'all'
+              }"
+              class="group block py-0.5 transition duration-500"
+            >
+              <span>All Tags</span>
+            </a>
+          </li>
+          <li
+            *ngFor="let tag of tags"
+            class="block my-4 mr-6 sm:mr-0 text-xl font-medium"
+          >
+            <a
+              (click)="filterProjects(tag)"
+              [ngClass]="{
+                'text-dark font-semibold sm:border-primary sm:border-r-2 border-brand-default': selectedTag === tag,
+                'text-gray-300': selectedTag !== tag
+              }"
+              class="group block py-0.5 transition duration-500"
+            >
+              <span>{{ tag }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Projects Section -->
+    <div class="w-3/4">
+      <!-- Featured Projects Section -->
+      <div class="featured-projects-section px-4">
+        <!-- Heading -->
+        <h2
+          #headline
+          class="text-5xl md:text-6xl xl:text-7xl 2xl:text-9xl font-medium text-left mb-4 lg:mb-16 w-1/2"
+        >
+          Featured Projects
+        </h2>
+
+        <!-- Featured Projects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 ">
+          <!-- Project 1 -->
+          <div
+            #project
+            *ngFor="let project of filteredProjects"
+            class="project-container overflow-hidden relative"
+          >
+            <div class="">
+              <img
+                [src]="project.logo"
+                alt="Product Logo"
+                class="w-44 h-12 object-fill"
+              />
+            </div>
+            <div class="project-description mt-2">
+              <p class="text-lg">{{ project.description }}</p>
+            </div>
+            <div class="overflow-hidden relative w-full mt-4">
+              <img
+                class="project-image w-full object-cover transition-transform duration-500 hover:scale-110"
+                [src]="project.image"
+                alt="Project Image"
+              />
+              <div
+                class="flex gap-2 flex-wrap absolute bottom-4 left-4"
+              >
+                <div
+                  *ngFor="let label of project.labels"
+                  class="bg-white px-4 py-1 rounded-full hover:border-[1px] border-[1px] border-white hover:border-brand-default hover:text-brand-default ease-in duration-300"
+                >
+                  {{ label }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <!-- Graphic Project Section -->
+  <h2
+    #headline2
+    class="text-5xl md:text-6xl xl:text-7xl 2xl:text-9xl font-medium text-left mb-4 lg:mb-16 xl:w-1/2"
+  >
+    Graphic Portfolio
+  </h2>
+
+  <div #graphicproject class="project-container2 overflow-hidden relative">
+    <div class="pt-4">
+      <img
+        [src]="graphicProject.logo"
+        alt="Graphic Project Logo"
+        class="w-44 object-cover h-10"
+      />
+    </div>
+    <div class="project-description mt-2">
+      <p class="text-lg">{{ graphicProject.description }}</p>
+    </div>
+    <div class="overflow-hidden relative w-full mt-4 group">
+      <img
+        [src]="graphicProject.image"
+        alt="Graphic Project Image"
+        class="project-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <div
+        class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      >
+        <div class="text-center text-white">
+          <p class="text-2xl font-semibold">Check Out Portfolio</p>
+          <a
+            [href]="graphicProject.link"
+            target="_blank"
+            class="mt-2 inline-flex items-center justify-center"
+          >
+            <img
+              width="50"
+              height="50"
+              class="hover:shadow-cyan-500/50 hover:drop-shadow-lg"
+              src="https://img.icons8.com/ios-filled/50/FFFFFF/link--v1.png"
+              alt="link"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 absolute bottom-4 left-4">
+        <div
+          *ngFor="let label of graphicProject.labels"
+          class="bg-white px-4 py-1 rounded-full hover:border-[1px] border-[1px] border-white hover:border-brand-default hover:text-brand-default ease-in duration-300"
+        >
+          {{ label }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-FAQ></app-FAQ>
+<hr class="border-grey-soft">
+<app-readyCollabration ></app-readyCollabration>
+<app-footer></app-footer>

@@ -19,7 +19,10 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "gsap": "^3.12.5",
+    "jquery": "^3.7.1",
     "rxjs": "~7.5.0",
+    "slick-carousel": "^1.8.1",
+    "symbol-observable": "^4.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

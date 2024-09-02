@@ -1,0 +1,5 @@
+
+
+.client-logo img:hover {
+  filter: grayscale(20%); /* Remove gray filter on hover */
+}

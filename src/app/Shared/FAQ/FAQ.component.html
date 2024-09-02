@@ -1,0 +1,24 @@
+<section class="relative py-14 lg:py-[120px]">
+  <div class="md:container md:mx-auto flex-1 px-5">
+    <h2 #headline class="text-5xl sm:text-7xl lg:text-9xl tracking-tight font-medium mb-6 lg:mb-14">
+      FAQ’s
+    </h2>
+    <!-- Accordion Wrapper with Responsive Grid -->
+    <div class="accordion-wrap grid gap-5 lg:grid-cols-2">
+      <!-- Accordion FAQ Items -->
+      <div *ngFor="let item of faqItems; let i = index" class="accordion-item bg-white w-full rounded-[16px] p-5 lg:px-8 lg:py-10 shadow-[0_32px_64px_-12px_rgba(85,105,135,0.08)] transition-all duration-500">
+        <div class="accordion-title flex justify-between cursor-pointer hover:text-brand-default" (click)="toggleAccordion(i)">
+          <div class="flex-1 text-lg lg:text-2xl font-semibold">
+            {{ item.question }}
+          </div>
+          <span class="icon transition-all duration-300 h-8 w-8 text-gray-700 rounded-full flex justify-center items-center bg-gray-200 text-2xl" [ngClass]="{'bg-brand-default text-white': item.isOpen}">
+            {{ item.isOpen ? '-' : '+' }}
+          </span>
+        </div>
+        <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out" #contentRef>
+          <p class="text-sm lg:text-lg text-grey  mt-2 lg:mt-4">{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

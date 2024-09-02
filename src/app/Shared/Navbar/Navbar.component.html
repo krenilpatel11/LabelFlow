@@ -1,25 +1,26 @@
 <!-- Navbar -->
-<nav
-  class="fixed flex w-[89%] items-center justify-between px-8 py-8 bg-white border-b-[1px] z-10"
+<nav #navbar
+  class="fixed flex w-full md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1536px]  items-center justify-between px-8 py-8 bg-white border-b-[1px] z-[999]"
 >
   <!-- Logo -->
-  <div class="w-[16rem] -mt-4">
-    <img src="../../../assets/Image/labelFlow-tagline.png" alt="LabelFlow" />
+  <div class="w-[11rem] lg:w-[15rem] -mt-4">
+    <img src="../../../assets/Image/LabelFlow-logo.png" alt="LabelFlow" />
   </div>
 
   <!-- Gmail -->
   <div>
-    <p class="text-lg font-medium border-brand-default hover:text-brand-default ease-in duration-300 border-b-[1px]">
-      LabelFlow@gmail.com
+    <p class="text-lg font-medium border-brand-default hover:text-brand-default ease-in duration-300 border-b-[1px] hidden lg:block">
+      labelflow.pro&commat;gmail.com
+      
     </p>
   </div>
 
   <!-- call to book Menu -->
-  <div class="button-container flex gap-x-10">
+  <div class="button-container  flex gap-x-10">
     <div
-      class="flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-6 py-[0.8rem] text-white text-lg ease-in duration-200 rounded-full"
+      class="hidden lg:flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-6 py-[0.8rem] text-white text-lg ease-in duration-200 rounded-full "
     >
-      <button>Book a call</button>
+      <button (click)="openCalendly()">Book a call</button>
       <img
         width="32"
         height="32"
@@ -45,20 +46,20 @@
 <div
   #fullpageNav
   id="fullpage-nav"
-  class="fixed inset-0 bg-white bg-opacity-90 z-1 hidden flex-col items-center justify-center text-black"
+  class="fixed inset-0 bg-white  z-10 hidden flex-col items-center justify-center text-black"
 >
-  <ul #navLinks class="text-7xl space-y-12 text-center">
-    <li class="nav-link relative">
-      <span class="hover-underline">Home</span>
-    </li>
-    <li class="nav-link relative">
-      <span class="hover-underline">About Us</span>
-    </li>
-    <li class="nav-link relative">
-      <span class="hover-underline">Projects</span>
-    </li>
-    <li class="nav-link relative">
-      <span class="hover-underline">Contact</span>
-    </li>
-  </ul>
+<ul #navLinks class="text-5xl lg:text-7xl space-y-12 text-center">
+  <li class="nav-link relative">
+    <span class="hover-underline" [routerLink]="['/']" (click)="navigateToTop()">Home</span>
+  </li>
+  <li class="nav-link relative">
+    <span class="hover-underline" [routerLink]="['/about']" (click)="navigateToTop()">About Us</span>
+  </li>
+  <li class="nav-link relative">
+    <span class="hover-underline" [routerLink]="['/project']" (click)="navigateToTop()">Projects</span>
+  </li>
+  <li class="nav-link relative">
+    <span class="hover-underline" [routerLink]="['/contact']" (click)="navigateToTop()">Contact</span>
+  </li>
+</ul>
 </div>

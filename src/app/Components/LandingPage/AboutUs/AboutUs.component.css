@@ -1,0 +1,35 @@
+.approach-section, .why-choose-us-section {
+  padding: 100px 20px;
+  position: relative;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+
+
+@media (min-width: 768px) {
+  .title {
+    margin-right: 100px;
+  }
+  
+  .description {
+    margin-right: 100px;
+  }
+}
+
+.bg-brand-default {
+  background-color: #FF0366; /* Your brand's default color */
+  transition: background-color 0.5s ease;
+}
+
+.white-text {
+  color: white;
+}
+
+.black-text {
+  color: black;
+}

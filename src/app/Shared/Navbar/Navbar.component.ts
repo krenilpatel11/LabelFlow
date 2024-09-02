@@ -7,19 +7,39 @@ import gsap from 'gsap';
   templateUrl: './Navbar.component.html',
   styleUrls: ['./Navbar.component.css']
 })
-export class NavbarComponent {
-
+export class NavbarComponent implements OnInit {
+  ngOnInit(): void {
+  }
+  
+  constructor(private router: Router){
+  }
   
   @ViewChild('fullpageNav') fullpageNav!: ElementRef;
+  @ViewChild('navbar') navbar!: ElementRef;
   @ViewChild('navLinks') navLinks!: ElementRef;
   @ViewChild('hamburgerButton') hamburgerButton!: ElementRef;
   isNavOpen = false;
 
   ngAfterViewInit(): void {
     // Initialize the nav as hidden
+    gsap.set(this.navbar.nativeElement, { opacity: 0, visibility: 'hidden' });
+    gsap.to(this.navbar.nativeElement, { duration: 2, y: 0, opacity: 1, visibility: 'visible' , ease: 'power2.out'  });
     gsap.set(this.fullpageNav.nativeElement, { opacity: 0, visibility: 'hidden' });
     gsap.set(this.navLinks.nativeElement.querySelectorAll('.nav-link'), { opacity: 0, y: -50 });
     gsap.set(this.hamburgerButton.nativeElement.querySelectorAll('.bar'), { transformOrigin: 'center' });
+  
+  }
+  
+  openCalendly(): void {
+    window.open('https://calendly.com/labelflow-pro/30min', '_blank');
+  }
+  navigateToTop(): void {
+    // Navigate to the top of the page after route change
+    this.router.events.subscribe(() => {
+      window.scrollTo(0, 0);
+    });
+    // You can also close the navigation here if needed
+    this.toggleNav();
   }
 
   toggleNav() {
@@ -29,7 +49,7 @@ export class NavbarComponent {
 
     if (!this.isNavOpen) {
       // Open Navigation with animation
-      gsap.to(nav, { duration: 0.5, opacity: 1, visibility: 'visible', ease: 'power2.inOut' });
+      gsap.to(nav, { duration: 0.5, opacity: 1, backfaceVisibility: 1,visibility: 'visible', ease: 'power2.inOut' });
       gsap.to(links, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.3 });
 
       // Transform hamburger into close icon
@@ -49,4 +69,6 @@ export class NavbarComponent {
 
     this.isNavOpen = !this.isNavOpen;
   }
+  
+  
 }

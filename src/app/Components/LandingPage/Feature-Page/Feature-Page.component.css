@@ -1,0 +1,29 @@
+@media (min-width: 1536px) {
+  .headline {
+    line-height: 9rem !important;
+  }
+  .subheadline{
+    line-height: 3rem !important;
+  }
+}
+
+@media (min-width: 1280px) and (max-width:1538px){
+  .spec-text {
+    line-height: 5rem !important;
+  }
+  
+}
+
+@media (min-width: 768px) and (max-width:1279px){
+  .spec-text  {
+    line-height: 4rem !important;
+  }
+  
+}
+
+@media (max-width: 768px){
+  .spec-text  {
+    line-height: 4rem !important;
+  }
+  
+}
