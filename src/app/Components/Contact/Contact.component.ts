@@ -7,8 +7,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'] 
+  templateUrl: './Contact.component.html',
+  styleUrls: ['./Contact.component.css'] 
 })
 export class ContactComponent implements AfterViewInit {
   @ViewChild('headline') headline!: ElementRef;
