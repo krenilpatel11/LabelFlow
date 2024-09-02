@@ -1,4 +1,6 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import {ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
