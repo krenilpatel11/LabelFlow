@@ -1,15 +1,15 @@
 {
   "name": "label-flow",
   "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build",
-    "postinstall": "ng build --prod",
-    "heroku-postbuild": "ng build --prod",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+ "scripts": {
+  "ng": "ng",
+  "start": "node server.js",
+  "build": "ng build",
+  "postinstall": "ng build --configuration production",
+  "heroku-postbuild": "ng build --configuration production",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test"
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.2.0",
@@ -45,5 +45,9 @@
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
     "typescript": "~4.7.2"
-  }
+  },
+  "engines": {
+  "node": "20.x",
+  "npm": "10.x"
+}
 }
