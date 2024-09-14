@@ -23,17 +23,17 @@
 
   <!-- call to book Menu -->
   <div class="button-container flex gap-x-10">
-    <div
+    <button (click)="openCalendly()" 
       class="hidden lg:flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-6 py-[0.8rem] text-white text-lg ease-in duration-200 rounded-full"
     >
-      <button (click)="openCalendly()">Book a call</button>
+      <div>Book a call</div>
       <img
         width="32"
         height="32"
         src="https://img.icons8.com/hieroglyphs/32/FFFFFF/up-right.png"
         alt="up-right"
       />
-    </div>
+    </button>
 
     <!-- Hamburger Menu (also acts as close button) -->
     <div
