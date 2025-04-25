@@ -1,10 +1,10 @@
 <div class="md:container mx-auto px-4 pt-32">
   <div class="flex">
     <!-- Scrollable List of Tags -->
-    <div class="lg:w-1/5 pr-6">
+    <div class="lg:w-1/5 md:pr-6 pr-3">
       <div class="scrollable">
         <ul class="tablist mt-3 sticky top-40">
-          <li class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl font-medium">
+          <li class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl md:font-medium font-small">
             <a
               (click)="filterProjects('all')"
               [ngClass]="{
@@ -18,7 +18,7 @@
           </li>
           <li
             *ngFor="let tag of tags"
-            class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl  font-medium"
+            class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl  md:font-medium font-small"
           >
             <a
               (click)="filterProjects(tag)"
@@ -38,7 +38,7 @@
     <!-- Projects Section -->
     <div class="lg:w-3/4">
       <!-- Featured Projects Section -->
-      <div class="featured-projects-section px-4">
+      <div class="featured-projects-section md:px-4">
         <!-- Heading -->
         <h2
           #headline

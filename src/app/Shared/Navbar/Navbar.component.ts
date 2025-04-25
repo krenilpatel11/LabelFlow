@@ -23,11 +23,14 @@ export class NavbarComponent implements OnInit {
   ngAfterViewInit(): void {
     // Initialize the nav as hidden
     gsap.set(this.navbar.nativeElement, { opacity: 0, visibility: 'hidden' });
+    // Animate the navbar to fade in and slide down
     gsap.to(this.navbar.nativeElement, { duration: 2, y: 0, opacity: 1, visibility: 'visible' , ease: 'power2.out'  });
+    // Set the full-page navigation to be initially hidden
     gsap.set(this.fullpageNav.nativeElement, { opacity: 0, visibility: 'hidden' });
+    // Set initial state for nav links (hidden and slightly above their final position)
     gsap.set(this.navLinks.nativeElement.querySelectorAll('.nav-link'), { opacity: 0, y: -50 });
+    // Set the transform origin for hamburger button bars
     gsap.set(this.hamburgerButton.nativeElement.querySelectorAll('.bar'), { transformOrigin: 'center' });
-  
   }
   
   openCalendly(): void {
