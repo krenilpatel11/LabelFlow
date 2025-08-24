@@ -45,6 +45,12 @@ export class ProjectComponent implements OnInit, AfterViewInit {
       image: '../../../../assets/Image/screenshot2.jpeg',
       labels: ['Web App Design', 'Mobile Responsive','Dashboard'],
     },
+    {
+      logo: '../../../../assets/Image/neighborlyHub-Logo.png',
+      description: `Gated Community Management App – A modern, mobile-first application designed for residents, security staff, administrators, and service staff to simplify community living. The app features secure onboarding, visitor & delivery management, staff tracking, SOS alerts, complaint handling, payments, and community engagement tools like polls, events, and announcements. With role-based dashboards, real-time notifications, and seamless mobile usability, it ensures safety, transparency, and convenience for gated societies.`,
+      image: '../../../../assets/Image/CommunityHubPortfolio.jpeg',
+      labels: ['Web App Design', 'Mobile Responsive','Dashboard'],
+    },
   ];
 
   graphicProject = {

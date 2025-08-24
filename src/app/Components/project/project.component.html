@@ -4,11 +4,14 @@
     <div class="lg:w-1/5 md:pr-6 pr-3">
       <div class="scrollable">
         <ul class="tablist mt-3 sticky top-40">
-          <li class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl md:font-medium font-small">
+          <li
+            class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl md:font-medium font-small"
+          >
             <a
               (click)="filterProjects('all')"
               [ngClass]="{
-                'text-dark font-semibold sm:border-primary sm:border-r-2 border-brand-default': selectedTag === 'all',
+                'text-dark font-semibold sm:border-primary sm:border-r-2 border-brand-default':
+                  selectedTag === 'all',
                 'text-gray-300': selectedTag !== 'all'
               }"
               class="group block py-0.5 transition duration-500"
@@ -18,12 +21,13 @@
           </li>
           <li
             *ngFor="let tag of tags"
-            class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl  md:font-medium font-small"
+            class="block my-4 mr-6 sm:mr-0 text-base lg:text-xl md:font-medium font-small"
           >
             <a
               (click)="filterProjects(tag)"
               [ngClass]="{
-                'text-dark font-semibold sm:border-primary sm:border-r-2 border-brand-default': selectedTag === tag,
+                'text-dark font-semibold sm:border-primary sm:border-r-2 border-brand-default':
+                  selectedTag === tag,
                 'text-gray-300': selectedTag !== tag
               }"
               class="group block py-0.5 transition duration-500"
@@ -34,7 +38,7 @@
         </ul>
       </div>
     </div>
-    
+
     <!-- Projects Section -->
     <div class="lg:w-3/4">
       <!-- Featured Projects Section -->
@@ -48,7 +52,7 @@
         </h2>
 
         <!-- Featured Projects -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <!-- Project 1 -->
           <div
             #project
@@ -71,9 +75,7 @@
                 [src]="project.image"
                 alt="Project Image"
               />
-              <div
-                class="flex gap-2 flex-wrap absolute bottom-4 left-4"
-              >
+              <div class="flex gap-2 flex-wrap absolute bottom-4 left-4">
                 <div
                   *ngFor="let label of project.labels"
                   class="bg-white px-4 py-1 rounded-full hover:border-[1px] border-[1px] border-white hover:border-brand-default hover:text-brand-default ease-in duration-300"
@@ -86,7 +88,6 @@
         </div>
       </div>
     </div>
-  
   </div>
 
   <!-- Graphic Project Section -->
@@ -146,8 +147,7 @@
   </div>
 </div>
 
-
 <app-FAQ></app-FAQ>
-<hr class="border-grey-soft">
-<app-readyCollabration ></app-readyCollabration>
+<hr class="border-grey-soft" />
+<app-readyCollabration></app-readyCollabration>
 <app-footer></app-footer>
