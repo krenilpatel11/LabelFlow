@@ -17,7 +17,7 @@ export class ProjectComponent implements OnInit, AfterViewInit {
     'Landing Page',
     'Mobile Responsive',
     'Web App Design',
-   
+    'Azure AI'
   ];
 
   projects = [
@@ -50,6 +50,13 @@ export class ProjectComponent implements OnInit, AfterViewInit {
       description: `Gated Community Management App – A modern, mobile-first application designed for residents, security staff, administrators, and service staff to simplify community living. The app features secure onboarding, visitor & delivery management, staff tracking, SOS alerts, complaint handling, payments, and community engagement tools like polls, events, and announcements. With role-based dashboards, real-time notifications, and seamless mobile usability, it ensures safety, transparency, and convenience for gated societies.`,
       image: '../../../../assets/Image/CommunityHubPortfolio.jpeg',
       labels: ['Web App Design', 'Mobile Responsive','Dashboard'],
+    },
+     {
+      logo: '../../../../assets/Image/ViewVoicelogo.png',
+      description: `ViewVoice — AI-Powered Invoice Intelligence – ViewVoice is a full-stack, AI-powered document intelligence platform conceptualized and developed by LabelFlow to automate invoice and receipt processing. The solution leverages Azure Document Intelligence to extract accurate, structured data from unstructured documents such as invoices, bills, and receipts. It transforms raw document inputs into clean, analytics-ready datasets suitable for financial tracking and insights.`,
+      image: '../../../../assets/Image/ViewVoiceScreenShot.jpeg',
+      labels: ['Web App Design','Dashboard','Azure AI'],
+      link:'https://view-voice-ui.vercel.app/'
     },
   ];
 
