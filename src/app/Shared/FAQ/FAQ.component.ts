@@ -69,35 +69,38 @@ export class FAQComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-  
-    gsap.from(this.headline.nativeElement,  {
+    // Collapse all FAQ items initially
+    this.contentRefs.forEach((contentRef) => {
+      contentRef.nativeElement.style.height = '0';
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.from(this.headline.nativeElement, {
       scrollTrigger: {
         trigger: this.headline.nativeElement,
-        start: "top 80%", // Start animation when top of section reaches 80% of viewport height
-        end: "bottom 20%", // End animation when bottom of section reaches 20% of viewport height
-        toggleActions: "play none none none", // Only play the animation once
+        start: 'top 85%',
+        toggleActions: 'play none none none',
       },
-      duration: 1.5, y: -100, opacity: 0, ease: 'power2.out', delay: 0.4 });
-  
-    this.contentRefs.forEach((contentRef, index) => {
-      const content = contentRef.nativeElement;
-      content.style.height = '0';  // Initially collapse all items
+      duration: 1,
+      y: -60,
+      opacity: 0,
+      ease: 'power2.out',
+      delay: 0.2,
     });
 
     const faqTitles = document.querySelectorAll('.accordion-title');
-
     faqTitles.forEach((title, index) => {
       gsap.from(title, {
         scrollTrigger: {
           trigger: title,
-          start: 'top 80%',
-          end:'bottom 20%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         },
-        x: index % 2 === 0 ? -100 : 100,
+        x: index % 2 === 0 ? -60 : 60,
         opacity: 0,
-        duration: 1,
-        ease: 'power2.inOut',
+        duration: 0.7,
+        ease: 'power2.out',
       });
     });
   }

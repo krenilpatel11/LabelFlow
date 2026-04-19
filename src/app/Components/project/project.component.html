@@ -120,19 +120,18 @@
       >
         <div class="text-center text-white">
           <p class="text-2xl font-semibold">Check Out Portfolio</p>
-          <a
-            [href]="graphicProject.link"
-            target="_blank"
-            class="mt-2 inline-flex items-center justify-center"
-          >
-            <img
-              width="50"
-              height="50"
-              class="hover:shadow-cyan-500/50 hover:drop-shadow-lg"
-              src="https://img.icons8.com/ios-filled/50/FFFFFF/link--v1.png"
-              alt="link"
-            />
-          </a>
+            <a
+              [href]="graphicProject.link"
+              target="_blank"
+              class="mt-2 inline-flex items-center justify-center"
+            >
+              <!-- Inline external link SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:drop-shadow-lg" aria-label="Open portfolio link">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
         </div>
       </div>
       <div class="flex flex-wrap gap-2 absolute bottom-4 left-4">

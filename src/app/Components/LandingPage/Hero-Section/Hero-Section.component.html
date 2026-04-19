@@ -27,12 +27,11 @@
     #ctaButton
     (click)="openCalendly()"
   >
-    <a > Get Started Today </a>
-    <img
-      width="32"
-      height="32"
-      src="https://img.icons8.com/hieroglyphs/32/FFFFFF/up-right.png"
-      alt="up-right"
-    />
+    <a> Get Started Today </a>
+    <!-- Inline arrow SVG replaces external icons8 request -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="7" y1="17" x2="17" y2="7"/>
+      <polyline points="7 7 17 7 17 17"/>
+    </svg>
   </div>
 </div>

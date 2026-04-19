@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // @ts-ignore
@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./Testimonial.component.css']
 })
 export class TestimonialComponent {
-
   @ViewChild('testimonial', { static: true }) testimonial: ElementRef | undefined;
   @ViewChild('testimonial1') testimonial1!: ElementRef;
 
@@ -22,6 +21,11 @@ export class TestimonialComponent {
   }
 
   ngAfterViewInit() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Still fire counter animation, just skip GSAP tweens
+      this.animateCounters();
+      return;
+    }
     this.animateOnScroll();
   }
 
@@ -30,39 +34,42 @@ export class TestimonialComponent {
 
     gsap.from('.animate', {
       opacity: 0,
-      x: 100,
+      x: 60,
       duration: 0.5,
       ease: 'power1.out',
       scrollTrigger: {
         trigger: this.testimonial.nativeElement,
-        start: 'top 80%', 
+        start: 'top 80%',
         onEnter: () => this.animateCounters(),
       },
     });
-    gsap.from(this.testimonial1.nativeElement,  {
+
+    gsap.from(this.testimonial1.nativeElement, {
       scrollTrigger: {
         trigger: this.testimonial1.nativeElement,
-        start: "top 80%", // Start animation when top of section reaches 80% of viewport height
-        end: "bottom 20%", // End animation when bottom of section reaches 20% of viewport height
-        toggleActions: "play none none none", // Only play the animation once
+        start: 'top 85%',
+        toggleActions: 'play none none none',
       },
-      duration: 1.5, x: -50, opacity: 0, ease: 'power2.out' });
-      
+      duration: 1,
+      x: -50,
+      opacity: 0,
+      ease: 'power2.out',
+    });
   }
 
   initializeSlickSlider(): void {
     ($('.slick-slider') as any).slick({
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 400,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 4000,
       adaptiveHeight: true,
+      cssEase: 'ease',
     });
   }
-  
 
   animateCounters() {
     const counters = document.querySelectorAll('.setcount');
@@ -71,12 +78,10 @@ export class TestimonialComponent {
       const target = +counterElement.getAttribute('data-target')!;
       const speed = 200;
       let count = 0;
-
       const increment = target / speed;
 
       const updateCounter = () => {
         count += increment;
-
         if (count < target) {
           counterElement.innerText = Math.ceil(count).toString();
           requestAnimationFrame(updateCounter);

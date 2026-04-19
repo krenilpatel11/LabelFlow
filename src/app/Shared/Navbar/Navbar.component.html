@@ -1,92 +1,127 @@
 <!-- Navbar -->
 <nav
   #navbar
-  class="fixed flex w-full md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1536px] items-center justify-between px-8 py-8 bg-white border-b-[1px] z-[999]"
+  class="fixed flex w-full items-center justify-between px-6 lg:px-8 py-5 bg-white border-b-[1px] z-[999]"
 >
   <!-- Logo -->
-  <div class="w-[11rem] lg:w-[15rem] -mt-4 cursor-pointer">
+  <div class="w-[9rem] lg:w-[13rem] cursor-pointer flex-shrink-0">
     <img
-      src="../../../assets/Image/LabelFlow-logo.png"
+      src="../../../assets/Image/LabelFlow-logo.webp"
       [routerLink]="['/']"
       alt="LabelFlow"
+      width="208"
+      height="48"
     />
   </div>
 
-  <!-- Gmail -->
-  <div>
+  <!-- Gmail (desktop only) -->
+  <div class="hidden lg:block">
     <p
-      class="text-lg font-medium border-brand-default hover:text-brand-default ease-in duration-300 border-b-[1px] hidden lg:block"
+      class="text-lg font-medium border-brand-default hover:text-brand-default ease-in duration-300 border-b-[1px]"
     >
-      labelflow.pro&commat;gmail.com
+      labelflow.pro&#64;gmail.com
     </p>
   </div>
 
-  <!-- call to book Menu -->
-  <div class="button-container flex gap-x-10">
+  <!-- Actions -->
+  <div class="button-container flex gap-x-4 lg:gap-x-8 items-center">
     <button
       (click)="openCalendly()"
-      class="hidden lg:flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-6 py-[0.8rem] text-white text-lg ease-in duration-200 rounded-full"
+      class="hidden lg:flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-6 py-3 text-white text-base ease-in duration-200 rounded-full"
+      aria-label="Book a call"
     >
-      <div>Book a call</div>
-      <img
-        width="32"
-        height="32"
-        src="https://img.icons8.com/hieroglyphs/32/FFFFFF/up-right.png"
-        alt="up-right"
-      />
+      <span>Book a call</span>
+      <!-- Inline up-right arrow SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="7" y1="17" x2="17" y2="7"/>
+        <polyline points="7 7 17 7 17 17"/>
+      </svg>
     </button>
 
-    <!-- Hamburger Menu (also acts as close button) -->
-    <div
+    <!-- Hamburger / Close button -->
+    <button
       #hamburgerButton
-      class="hamburger cursor-pointer h-14 w-14 rounded-full bg-black hover:bg-brand-default ease-in duration-200 flex flex-col justify-center items-center"
+      class="hamburger cursor-pointer h-12 w-12 lg:h-14 lg:w-14 rounded-full bg-black hover:bg-brand-default ease-in duration-200 flex flex-col justify-center items-center flex-shrink-0"
       (click)="toggleNav()"
+      [attr.aria-expanded]="isNavOpen"
+      aria-label="Toggle navigation menu"
     >
-      <div class="bar w-6 h-0.5 bg-white mb-1"></div>
-      <div class="bar w-6 h-0.5 bg-white mb-1"></div>
-      <div class="bar w-6 h-0.5 bg-white"></div>
-    </div>
+      <span class="bar w-5 lg:w-6 h-0.5 bg-white mb-1 block"></span>
+      <span class="bar w-5 lg:w-6 h-0.5 bg-white mb-1 block"></span>
+      <span class="bar w-5 lg:w-6 h-0.5 bg-white block"></span>
+    </button>
   </div>
 </nav>
 
-<!-- Full-page Navigation -->
+<!-- Full-page Navigation Overlay -->
 <div
   #fullpageNav
   id="fullpage-nav"
-  class="fixed inset-0 bg-white z-10 hidden flex-col items-center justify-center text-black"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+  class="fixed inset-0 bg-white z-[998] flex-col items-center justify-center text-black"
 >
-  <ul #navLinks class="text-5xl lg:text-7xl space-y-12 text-center">
+  <!-- Close hint for screen readers -->
+  <button
+    class="sr-only"
+    (click)="toggleNav()"
+  >Close menu</button>
+
+  <ul #navLinks class="flex flex-col items-center gap-y-8 md:gap-y-12 text-center px-4">
     <li class="nav-link relative">
-      <span
-        class="hover-underline"
+      <a
+        class="hover-underline nav-link-text block"
+        [class.active-nav-link]="isActive('/')"
         [routerLink]="['/']"
         (click)="navigateToTop()"
-        >Home</span
-      >
+      >Home</a>
     </li>
     <li class="nav-link relative">
-      <span
-        class="hover-underline"
+      <a
+        class="hover-underline nav-link-text block"
+        [class.active-nav-link]="isActive('/about')"
         [routerLink]="['/about']"
         (click)="navigateToTop()"
-        >About Us</span
-      >
+      >About Us</a>
     </li>
     <li class="nav-link relative">
-      <span
-        class="hover-underline"
+      <a
+        class="hover-underline nav-link-text block"
+        [class.active-nav-link]="isActive('/project')"
         [routerLink]="['/project']"
         (click)="navigateToTop()"
-        >Projects</span
-      >
+      >Projects</a>
     </li>
     <li class="nav-link relative">
-      <span
-        class="hover-underline"
+      <a
+        class="hover-underline nav-link-text block"
+        [class.active-nav-link]="isActive('/contact')"
         [routerLink]="['/contact']"
         (click)="navigateToTop()"
-        >Contact</span
+      >Contact</a>
+    </li>
+
+    <!-- Book a call button (visible in mobile nav) -->
+    <li class="nav-link relative mt-4 lg:hidden">
+      <button
+        (click)="openCalendly(); navigateToTop()"
+        class="flex justify-center items-center gap-2 bg-brand-default hover:bg-brand-dark px-8 py-4 text-white text-xl ease-in duration-200 rounded-full"
       >
+        Book a call
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7"/>
+          <polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </button>
+    </li>
+
+    <!-- Email (visible in mobile nav) -->
+    <li class="nav-link relative lg:hidden">
+      <a
+        href="mailto:labelflow.pro@gmail.com"
+        class="text-xl text-gray-500 hover:text-brand-default transition-colors duration-300"
+      >labelflow.pro&#64;gmail.com</a>
     </li>
   </ul>
 </div>

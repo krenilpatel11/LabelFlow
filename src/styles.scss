@@ -8,3 +8,36 @@ body {
   @apply font-sans overflow-x-hidden;
 }
 
+/* GPU-accelerated elements - hints for browser compositor */
+[data-gsap],
+.gsap-animated {
+  will-change: transform, opacity;
+}
+
+/* Smooth image rendering */
+img {
+  image-rendering: auto;
+}
+
+/* Reduce layout shift from images */
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Project card hover - use GPU */
+.project-image {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Respect reduced motion system preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

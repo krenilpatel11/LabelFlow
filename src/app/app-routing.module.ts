@@ -1,29 +1,44 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './Components/HomePage/HomePage.component';
-import { LandingPageComponent } from './Components/LandingPage/LandingPage/LandingPage.component';
-import { AboutUsComponent } from './Components/LandingPage/AboutUs/AboutUs.component';
-import { ProjectComponent } from './Components/project/project.component';
-import { ContactComponent } from './Components/Contact/Contact.component';
-import { AboutUsPageComponent } from './Components/AboutUsPage/AboutUsPage.component';
 
 const routes: Routes = [
   {
-    path: '', component: LandingPageComponent,
+    path: '',
+    loadChildren: () =>
+      import('./Components/LandingPage/landing-page.module').then(
+        m => m.LandingPageModule
+      ),
   },
   {
-    path: 'about', component: AboutUsPageComponent
+    path: 'about',
+    loadChildren: () =>
+      import('./Components/AboutUsPage/about-us-page.module').then(
+        m => m.AboutUsPageModule
+      ),
   },
   {
-    path: 'project', component:ProjectComponent
+    path: 'project',
+    loadChildren: () =>
+      import('./Components/project/project.module').then(
+        m => m.ProjectModule
+      ),
   },
   {
-    path:'contact', component:ContactComponent
-  } 
+    path: 'contact',
+    loadChildren: () =>
+      import('./Components/Contact/contact.module').then(
+        m => m.ContactModule
+      ),
+  },
 ];
+
 @NgModule({
-  
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+      anchorScrolling: 'enabled',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

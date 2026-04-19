@@ -2,6 +2,8 @@ import { gsap } from "gsap";
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -11,40 +13,12 @@ export class FooterComponent implements AfterViewInit {
   @ViewChild('footer') footer!: ElementRef;
 
   ngAfterViewInit(): void {
-        gsap.from("footer img", {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top 80%", // Start animation when footer is 80% into view
-      }
-    });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    // Social Links Animation with ScrollTrigger
-    gsap.from("footer nav ul li", {
-      opacity: 0,
-      y: 20,
-      stagger: 0.2,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top 80%", // Start animation when footer is 80% into view
-      }
-    });
+    const stConfig = { trigger: 'footer', start: 'top 90%' };
 
-    // Copyright Text Animation with ScrollTrigger
-    gsap.from("footer div.text-base", {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top 80%", // Start animation when footer is 80% into view
-      }
-    });
+    gsap.from('footer img', { opacity: 0, y: 15, duration: 0.7, ease: 'power2.out', scrollTrigger: stConfig });
+    gsap.from('footer nav ul li', { opacity: 0, y: 15, stagger: 0.1, duration: 0.7, ease: 'power2.out', scrollTrigger: stConfig });
+    gsap.from('footer div.text-base', { opacity: 0, y: 15, duration: 0.7, ease: 'power2.out', scrollTrigger: stConfig });
   }
 }

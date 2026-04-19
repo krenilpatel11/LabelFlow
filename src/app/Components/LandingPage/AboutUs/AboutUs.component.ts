@@ -14,17 +14,22 @@ export class AboutUsComponent  {
   @ViewChild('approachSection') approachSection!: ElementRef;
 
   ngAfterViewInit() {
-    gsap.from(this.approachSection.nativeElement, {
-      opacity: 0,
-      x: 50,
-      scrollTrigger: {
-        trigger: this.approachSection.nativeElement,
-        start: "top 80%", // Start animation when top of section reaches 80% of viewport height
-          end: "bottom 20%", // End animation when bottom of section reaches 20% of viewport height
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion) {
+      gsap.from(this.approachSection.nativeElement, {
+        opacity: 0,
+        x: 40,
+        duration: 0.9,
+        scrollTrigger: {
+          trigger: this.approachSection.nativeElement,
+          start: "top 80%",
+          end: "bottom 20%",
           toggleActions: "play none none none",
-      }
-    });
-    
+        }
+      });
+    }
+
     ScrollTrigger.create({
       trigger: this.approachSection.nativeElement,
       start: "top 60%",

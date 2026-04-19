@@ -10,7 +10,6 @@
     <link rel="icon" type="image/x-icon" href="./assets/Image/favicon.ico" />
 
     <!-- SEO Meta Tags -->
-    <!-- Updated Meta Tags for SEO -->
     <meta
       name="description"
       content="LabelFlow is dedicated to transforming businesses with advanced web development, creative graphic design, and targeted marketing strategies. Achieve brand success with our innovative digital solutions."
@@ -34,6 +33,12 @@
     <meta property="og:url" content="https://labelflow.store" />
     <meta property="og:type" content="website" />
 
+    <!-- DNS prefetch for third-party origins -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://calendly.com" />
+    <link rel="dns-prefetch" href="https://embed.typeform.com" />
+    <link rel="preconnect" href="https://embed.typeform.com" crossorigin />
+
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -45,15 +50,14 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-3T8HDECC8S");
     </script>
 
-    <!-- google font -->
+    <!-- Google font: Urbanist with display=swap for fast text rendering -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
